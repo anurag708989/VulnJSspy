@@ -1,0 +1,53 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# --- Virtual environments ---
+venv/
+env/
+.venv/
+ENV/
+
+# --- VulnJSpy scan output (contains live secrets found during scans — never commit) ---
+vulnjspy_results/
+*_results/
+secrets_detailed_*.json
+secrets_*.csv
+endpoints_*.json
+subdomains_*.txt
+emails_*.txt
+scan_stats_*.json
+
+# --- Temp files from --url/--domain download+scan+cleanup cycle ---
+*.tmp
+tmp/
+temp/
+
+# --- Custom pattern / config files that may contain real org secrets ---
+custom_patterns*.json
+!tests/patterns/*.json
+.env
+*.env
+
+# --- Telegram / API credentials if ever hardcoded locally for testing ---
+telegram_token.txt
+config.local.json
+
+# --- Editor / OS cruft ---
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# --- Testing / coverage ---
+.pytest_cache/
+.coverage
+htmlcov/
