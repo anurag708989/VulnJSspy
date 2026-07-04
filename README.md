@@ -7,7 +7,7 @@
 [![Status](https://img.shields.io/badge/status-active-brightgreen)]()
 
 VulnJSpy Professional discovers, fetches, and scans public JavaScript assets for exposed
-secrets — API keys, cloud credentials, tokens, and endpoints — using a 300+ pattern regex
+secrets — API keys, cloud credentials, tokens, and endpoints — using a 135-pattern regex
 engine, entropy scoring, and multi-source URL discovery (`gau`, Wayback Machine, CommonCrawl).
 It ships with a Rich terminal UI, optional Telegram alerting, and JSON/CSV reporting for
 downstream tooling.
@@ -35,6 +35,10 @@ downstream tooling.
 - [Contributing](#contributing)
 - [License](#license)
 
+Additional docs: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) (workflow diagrams),
+[`patterns.json`](patterns.json) (full pattern library, machine-readable),
+[`CHANGELOG.md`](CHANGELOG.md) (every fix in the current release, with rationale).
+
 ---
 
 ## Why VulnJSpy
@@ -43,7 +47,7 @@ Most public JS secret scanners fall into two camps: lightweight single-file tool
 narrow pattern set, or heavyweight commercial platforms with a subscription paywall.
 VulnJSpy Professional targets the middle ground — a scriptable, self-hosted tool with:
 
-- A **300+ pattern library** across cloud providers, payment gateways, communication APIs,
+- A **135-pattern library** (see `patterns.json`) across cloud providers, payment gateways, communication APIs,
   CI/CD services, and generic secret formats — see [`docs/FEATURES.md`](docs/FEATURES.md)
   for the full breakdown by category.
 - **Three input modes**: a single local file, a single remote URL, or full-domain discovery
@@ -83,7 +87,7 @@ VulnJSpy Professional targets the middle ground — a scriptable, self-hosted to
 |---|---|
 | **Multi-mode scanning** | `--file`, `--url`, `--domain` — local file, single remote JS file, or full-domain recon |
 | **Discovery engine** | `gau`, Wayback Machine API, CommonCrawl aggregation with de-duplication |
-| **Pattern library** | 300+ regex patterns across ~20 categories (cloud, payments, comms, CI/CD, databases, generic) |
+| **Pattern library** | 135 regex patterns across 20+ categories (cloud, payments, comms, CI/CD, databases, generic) — see `patterns.json` |
 | **Confidence scoring** | Per-pattern base confidence + entropy validation + exclude-word filtering |
 | **Concurrency** | Configurable async worker pool (`--workers`, capped at 50) |
 | **Custom patterns** | Drop-in JSON pattern files (`--custom-patterns`) for org-specific secret formats |
@@ -209,7 +213,7 @@ citing them externally.
 
 | Feature | VulnJSpy Pro | Burp Suite (JS Link Finder) | SecretFinder | TruffleHog |
 |---|---|---|---|---|
-| Regex pattern count | 300+ | ~50 | ~60 | Detector-based (rules, not raw regex) |
+| Regex pattern count | 135 | ~50 | ~60 | Detector-based (rules, not raw regex) |
 | Domain-wide discovery | ✅ gau/Wayback/CommonCrawl | ❌ Manual/per-page | ❌ Manual | ⚠️ Repo/bucket scanning, not JS-focused |
 | Entropy scoring | ✅ | ❌ | ⚠️ Basic | ✅ |
 | Live secret verification | ❌ (planned) | ❌ | ❌ | ✅ (for supported detectors) |
