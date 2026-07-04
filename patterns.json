@@ -1,0 +1,1377 @@
+{
+  "tool": "VulnJSpy Professional",
+  "pattern_file_version": "2.0.0",
+  "note": "Actual pattern count as of this export is 135, not the '300+' figure quoted in earlier marketing material \u2014 that number was never accurate for this codebase and should not be reused.",
+  "pattern_count": 135,
+  "distinctive_format_count": 44,
+  "context_required_count": 33,
+  "patterns": [
+    {
+      "name": "AWS Access Key ID",
+      "regex": "AKIA[0-9A-Z]{16}",
+      "base_confidence": 95,
+      "category": "AWS & Cloud Infrastructure",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "AWS Secret Access Key",
+      "regex": "[A-Za-z0-9/+=]{40}",
+      "base_confidence": 85,
+      "category": "AWS & Cloud Infrastructure",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "aws",
+        "secret",
+        "access_key",
+        "accesskey",
+        "secretkey",
+        "secret_key"
+      ]
+    },
+    {
+      "name": "AWS Session Token",
+      "regex": "(?i)(aws|amazon)[_\\s-]*(session[_\\s-]*token|temporary[_\\s-]*security[_\\s-]*credentials)['\\\"\\s:=]+([A-Za-z0-9/+=]{100,})",
+      "base_confidence": 90,
+      "category": "AWS & Cloud Infrastructure",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "AWS Account ID",
+      "regex": "[0-9]{12}",
+      "base_confidence": 70,
+      "category": "AWS & Cloud Infrastructure",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "aws",
+        "account",
+        "arn"
+      ]
+    },
+    {
+      "name": "AWS ARN",
+      "regex": "arn:aws:[a-z0-9-]+:[a-z0-9-]*:[0-9]*:[a-zA-Z0-9-_/:.]+",
+      "base_confidence": 85,
+      "category": "AWS & Cloud Infrastructure",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "AWS S3 Bucket URL",
+      "regex": "https?://[a-zA-Z0-9\\-]+\\.s3(?:\\.[a-zA-Z0-9\\-]+)?\\.amazonaws\\.com",
+      "base_confidence": 90,
+      "category": "AWS & Cloud Infrastructure",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Google API Key",
+      "regex": "AIza[0-9A-Za-z\\-_]{35}",
+      "base_confidence": 95,
+      "category": "Google Cloud Platform",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Google OAuth Token",
+      "regex": "ya29\\.[0-9A-Za-z\\-_\\.]{60,200}",
+      "base_confidence": 90,
+      "category": "Google Cloud Platform",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Google Service Account Email",
+      "regex": "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.iam\\.gserviceaccount\\.com",
+      "base_confidence": 95,
+      "category": "Google Cloud Platform",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Firebase Database URL",
+      "regex": "https://[a-zA-Z0-9-]+\\.firebaseio\\.com",
+      "base_confidence": 85,
+      "category": "Google Cloud Platform",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Firebase Config",
+      "regex": "(?i)firebase['\\\"\\s:=]+\\{[^}]*apiKey['\\\"\\s:]*['\\\"][^'\\\"]+['\\\"]",
+      "base_confidence": 85,
+      "category": "Google Cloud Platform",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Firebase Server Key",
+      "regex": "AAAA[0-9A-Za-z\\-_]{7}:[A-Za-z0-9\\-_]{140}",
+      "base_confidence": 90,
+      "category": "Google Cloud Platform",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Azure Storage Account Key",
+      "regex": "[A-Za-z0-9+/]{88}==",
+      "base_confidence": 85,
+      "category": "Microsoft Azure",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "azure",
+        "storage",
+        "accountkey",
+        "account_key"
+      ]
+    },
+    {
+      "name": "Azure Connection String",
+      "regex": "DefaultEndpointsProtocol=https;AccountName=[^;]+;AccountKey=[^;]+",
+      "base_confidence": 90,
+      "category": "Microsoft Azure",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Azure Client Secret",
+      "regex": "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}",
+      "base_confidence": 80,
+      "category": "Microsoft Azure",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "azure",
+        "client_secret",
+        "clientsecret",
+        "tenant"
+      ]
+    },
+    {
+      "name": "GitHub Personal Token",
+      "regex": "ghp_[0-9a-zA-Z]{36}",
+      "base_confidence": 95,
+      "category": "GitHub & Git Services",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "GitHub App Token",
+      "regex": "ghs_[0-9a-zA-Z]{36}",
+      "base_confidence": 95,
+      "category": "GitHub & Git Services",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "GitHub Refresh Token",
+      "regex": "ghr_[0-9a-zA-Z]{36}",
+      "base_confidence": 95,
+      "category": "GitHub & Git Services",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "GitHub OAuth Token",
+      "regex": "gho_[0-9a-zA-Z]{36}",
+      "base_confidence": 95,
+      "category": "GitHub & Git Services",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "GitHub User Token",
+      "regex": "ghu_[0-9a-zA-Z]{36}",
+      "base_confidence": 95,
+      "category": "GitHub & Git Services",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "GitLab Personal Token",
+      "regex": "glpat-[a-zA-Z0-9\\-_]{20}",
+      "base_confidence": 90,
+      "category": "GitHub & Git Services",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "GitLab CI Token",
+      "regex": "glcit-[a-zA-Z0-9\\-_]{20}",
+      "base_confidence": 90,
+      "category": "GitHub & Git Services",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Bitbucket App Password",
+      "regex": "[A-Za-z0-9]{22}",
+      "base_confidence": 75,
+      "category": "GitHub & Git Services",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "bitbucket"
+      ]
+    },
+    {
+      "name": "JWT Token",
+      "regex": "eyJ[A-Za-z0-9\\-_=]+\\.[A-Za-z0-9\\-_=]+\\.?[A-Za-z0-9\\-_.+/=]*",
+      "base_confidence": 85,
+      "category": "JWT & OAuth Tokens",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "OAuth Bearer Token",
+      "regex": "(?i)bearer['\\\"\\s]+([a-zA-Z0-9\\-_.~+/=]{20,})",
+      "base_confidence": 80,
+      "category": "JWT & OAuth Tokens",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "OAuth Access Token",
+      "regex": "(?i)(access[_\\s-]*token)['\\\"\\s:=]+([a-zA-Z0-9\\-_.~+/=]{20,})",
+      "base_confidence": 75,
+      "category": "JWT & OAuth Tokens",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "OAuth Refresh Token",
+      "regex": "(?i)(refresh[_\\s-]*token)['\\\"\\s:=]+([a-zA-Z0-9\\-_.~+/=]{20,})",
+      "base_confidence": 75,
+      "category": "JWT & OAuth Tokens",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "OAuth Client ID",
+      "regex": "(?i)(client[_\\s-]*id)['\\\"\\s:=]+([a-zA-Z0-9\\-_.]{10,})",
+      "base_confidence": 70,
+      "category": "JWT & OAuth Tokens",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "OAuth Client Secret",
+      "regex": "(?i)(client[_\\s-]*secret)['\\\"\\s:=]+([a-zA-Z0-9\\-_.~]{20,})",
+      "base_confidence": 85,
+      "category": "JWT & OAuth Tokens",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "MongoDB URI",
+      "regex": "mongodb(?:\\+srv)?://[^\\s\\\"']+",
+      "base_confidence": 90,
+      "category": "Database Connection Strings",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "PostgreSQL URI",
+      "regex": "postgres(?:ql)?://[^\\s\\\"']+",
+      "base_confidence": 90,
+      "category": "Database Connection Strings",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "MySQL URI",
+      "regex": "mysql://[^\\s\\\"']+",
+      "base_confidence": 90,
+      "category": "Database Connection Strings",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Redis URI",
+      "regex": "redis://[^\\s\\\"']+",
+      "base_confidence": 90,
+      "category": "Database Connection Strings",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "SQLite Database",
+      "regex": "(?i)(database|db_path)['\\\"\\s:=]+[^\\s\\\"']*\\.sqlite[0-9]?",
+      "base_confidence": 75,
+      "category": "Database Connection Strings",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Connection String",
+      "regex": "(?i)(connection[_\\s-]*string|database[_\\s-]*url)['\\\"\\s:=]+([^\\s\\\"']+)",
+      "base_confidence": 80,
+      "category": "Database Connection Strings",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "JDBC URL",
+      "regex": "jdbc:[a-zA-Z0-9]+://[^\\s\\\"']+",
+      "base_confidence": 85,
+      "category": "Database Connection Strings",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "REACT_APP_STRIPE_PUBLISHABLE_KEY",
+      "regex": "REACT_APP_PUBLIC_STRIPE_PUBLISHABLE_KEY['\\\"\\s:=]+([pk_live_][a-zA-Z0-9]{24})",
+      "base_confidence": 95,
+      "category": "React Environment Variables (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "REACT_APP_CALENDLY_URL",
+      "regex": "REACT_APP_CALENDLY_URL['\\\"\\s:=]+(https://calendly\\.com/[^\\s\\\"']+)",
+      "base_confidence": 85,
+      "category": "React Environment Variables (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "REACT_APP_ENVIRONMENT",
+      "regex": "REACT_APP_ENVIRONMENT['\\\"\\s:=]+([a-zA-Z0-9_-]+)",
+      "base_confidence": 70,
+      "category": "React Environment Variables (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "REACT_APP_CLAIM_RESTRICTION",
+      "regex": "REACT_APP_CLAIM_RESTRICTION['\\\"\\s:=]+([a-zA-Z0-9_-]+)",
+      "base_confidence": 75,
+      "category": "React Environment Variables (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "REACT_APP_VERIFICATION_CODE",
+      "regex": "REACT_APP_VERIFICATION_CODE['\\\"\\s:=]+([a-zA-Z0-9_-]+)",
+      "base_confidence": 80,
+      "category": "React Environment Variables (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "REACT_APP_GPT_URL",
+      "regex": "REACT_APP_GPT_URL['\\\"\\s:=]+(https://[^\\s\\\"']+)",
+      "base_confidence": 85,
+      "category": "React Environment Variables (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "REACT_APP_GPT_PROMPT_PAYMENT_LINK",
+      "regex": "REACT_APP_GPT_PROMPT_PAYMENT_LINK['\\\"\\s:=]+([^\\s\\\"']+)",
+      "base_confidence": 80,
+      "category": "React Environment Variables (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "REACT_APP_PUBLIC_ACCESS_KEY_ID",
+      "regex": "REACT_APP_PUBLIC_ACCESS_KEY_ID['\\\"\\s:=]+([a-zA-Z0-9_-]{16,})",
+      "base_confidence": 85,
+      "category": "React Environment Variables (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "REACT_APP_PUBLIC_SECRET_ACCESS_KEY",
+      "regex": "REACT_APP_PUBLIC_SECRET_ACCESS_KEY['\\\"\\s:=]+([a-zA-Z0-9/+=]{40})",
+      "base_confidence": 90,
+      "category": "React Environment Variables (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "React Environment Variable",
+      "regex": "REACT_APP_[A-Z0-9_]+['\\\"\\s:=]+([^\\s\\\"']{6,})",
+      "base_confidence": 70,
+      "category": "React Environment Variables (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Generic API Key",
+      "regex": "(?i)(api[_\\s-]*key)['\\\"\\s:=]+([a-zA-Z0-9\\-_]{16,})",
+      "base_confidence": 75,
+      "category": "API Keys (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Secret Key",
+      "regex": "(?i)(secret[_\\s-]*key)['\\\"\\s:=]+([a-zA-Z0-9\\-_]{16,})",
+      "base_confidence": 80,
+      "category": "API Keys (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Auth Key",
+      "regex": "(?i)(auth[_\\s-]*key|authorization[_\\s-]*key)['\\\"\\s:=]+([a-zA-Z0-9\\-_]{16,})",
+      "base_confidence": 75,
+      "category": "API Keys (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Session Key",
+      "regex": "(?i)(session[_\\s-]*key)['\\\"\\s:=]+([a-zA-Z0-9\\-_]{16,})",
+      "base_confidence": 70,
+      "category": "API Keys (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "App Secret",
+      "regex": "(?i)(app[_\\s-]*secret|application[_\\s-]*secret)['\\\"\\s:=]+([a-zA-Z0-9\\-_]{16,})",
+      "base_confidence": 80,
+      "category": "API Keys (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Private Key",
+      "regex": "(?i)(private[_\\s-]*key)['\\\"\\s:=]+([a-zA-Z0-9\\-_/+=]{20,})",
+      "base_confidence": 85,
+      "category": "API Keys (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Master Key",
+      "regex": "(?i)(master[_\\s-]*key)['\\\"\\s:=]+([a-zA-Z0-9\\-_]{16,})",
+      "base_confidence": 85,
+      "category": "API Keys (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Stripe Secret Key",
+      "regex": "sk_live_[0-9a-zA-Z]{24}",
+      "base_confidence": 95,
+      "category": "Service-Specific Tokens (Enhanced)",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Stripe Publishable Key",
+      "regex": "pk_live_[0-9a-zA-Z]{24}",
+      "base_confidence": 85,
+      "category": "Service-Specific Tokens (Enhanced)",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Stripe Test Secret",
+      "regex": "sk_test_[0-9a-zA-Z]{24}",
+      "base_confidence": 70,
+      "category": "Service-Specific Tokens (Enhanced)",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "PayPal Client ID",
+      "regex": "A[a-zA-Z0-9]{80}",
+      "base_confidence": 85,
+      "category": "Service-Specific Tokens (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "paypal",
+        "client_id",
+        "clientid"
+      ]
+    },
+    {
+      "name": "PayPal Client Secret",
+      "regex": "E[a-zA-Z0-9]{80}",
+      "base_confidence": 90,
+      "category": "Service-Specific Tokens (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "paypal",
+        "client_secret",
+        "clientsecret"
+      ]
+    },
+    {
+      "name": "Square Access Token",
+      "regex": "sq0atp-[0-9A-Za-z\\-_]{22}",
+      "base_confidence": 90,
+      "category": "Service-Specific Tokens (Enhanced)",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Square Application ID",
+      "regex": "sq0idp-[0-9A-Za-z\\-_]{22}",
+      "base_confidence": 85,
+      "category": "Service-Specific Tokens (Enhanced)",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Braintree Access Token",
+      "regex": "access_token\\$production\\$[0-9a-z]{16}\\$[0-9a-f]{32}",
+      "base_confidence": 95,
+      "category": "Service-Specific Tokens (Enhanced)",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Slack Bot Token",
+      "regex": "xoxb-[0-9]{11,13}-[0-9]{11,13}-[a-zA-Z0-9]{24}",
+      "base_confidence": 95,
+      "category": "Communication Services",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Slack User Token",
+      "regex": "xoxp-[0-9]{11,13}-[0-9]{11,13}-[a-zA-Z0-9]{24}",
+      "base_confidence": 95,
+      "category": "Communication Services",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Slack Webhook URL",
+      "regex": "https://hooks\\.slack\\.com/services/[A-Z0-9]+/[A-Z0-9]+/[a-zA-Z0-9]+",
+      "base_confidence": 90,
+      "category": "Communication Services",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Discord Bot Token",
+      "regex": "[MN][A-Za-z\\d]{23}\\.[\\w-]{6}\\.[\\w-]{27}",
+      "base_confidence": 95,
+      "category": "Communication Services",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Discord Webhook",
+      "regex": "https://(?:discord|discordapp)\\.com/api/webhooks/[0-9]+/[a-zA-Z0-9\\-_]+",
+      "base_confidence": 90,
+      "category": "Communication Services",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Telegram Bot Token",
+      "regex": "[0-9]{8,10}:[a-zA-Z0-9_-]{35}",
+      "base_confidence": 95,
+      "category": "Communication Services",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Teams Webhook",
+      "regex": "https://[a-zA-Z0-9]+\\.webhook\\.office\\.com/webhookb2/[a-zA-Z0-9\\-]+",
+      "base_confidence": 90,
+      "category": "Communication Services",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "SendGrid API Key",
+      "regex": "SG\\.[a-zA-Z0-9\\-_]{22}\\.[a-zA-Z0-9\\-_]{43}",
+      "base_confidence": 95,
+      "category": "Email & Marketing Services",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Mailgun API Key",
+      "regex": "key-[0-9a-zA-Z]{32}",
+      "base_confidence": 90,
+      "category": "Email & Marketing Services",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Mailchimp API Key",
+      "regex": "[0-9a-f]{32}-us[0-9]{1,2}",
+      "base_confidence": 90,
+      "category": "Email & Marketing Services",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Twilio Account SID",
+      "regex": "AC[a-zA-Z0-9_\\-]{32}",
+      "base_confidence": 90,
+      "category": "Email & Marketing Services",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Twilio Auth Token",
+      "regex": "SK[0-9a-fA-F]{32}",
+      "base_confidence": 95,
+      "category": "Email & Marketing Services",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Twilio API Key",
+      "regex": "SK[a-zA-Z0-9]{32}",
+      "base_confidence": 90,
+      "category": "Email & Marketing Services",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "NPM Token",
+      "regex": "npm_[A-Za-z0-9]{36}",
+      "base_confidence": 90,
+      "category": "Development & CI/CD",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Docker Hub Token",
+      "regex": "dckr_pat_[a-zA-Z0-9\\-_]{36}",
+      "base_confidence": 90,
+      "category": "Development & CI/CD",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "CircleCI Token",
+      "regex": "[0-9a-f]{40}",
+      "base_confidence": 70,
+      "category": "Development & CI/CD",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "circleci",
+        "circle_token",
+        "circle-token"
+      ]
+    },
+    {
+      "name": "Travis CI Token",
+      "regex": "[a-zA-Z0-9]{22}",
+      "base_confidence": 65,
+      "category": "Development & CI/CD",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "travis"
+      ]
+    },
+    {
+      "name": "Jenkins API Token",
+      "regex": "[0-9a-f]{34}",
+      "base_confidence": 75,
+      "category": "Development & CI/CD",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "jenkins"
+      ]
+    },
+    {
+      "name": "GitLab Runner Token",
+      "regex": "GR1348941[a-zA-Z0-9\\-_]{20}",
+      "base_confidence": 85,
+      "category": "Development & CI/CD",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Facebook Access Token",
+      "regex": "EAACEdEose0cBA[0-9A-Za-z]+",
+      "base_confidence": 85,
+      "category": "Social Media & Analytics",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Twitter API Key",
+      "regex": "[1-9][0-9]+-[0-9a-zA-Z]{40}",
+      "base_confidence": 85,
+      "category": "Social Media & Analytics",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "twitter"
+      ]
+    },
+    {
+      "name": "Instagram Access Token",
+      "regex": "IGQV[0-9A-Za-z\\-_]+",
+      "base_confidence": 80,
+      "category": "Social Media & Analytics",
+      "distinctive_format": true,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "LinkedIn API Key",
+      "regex": "[0-9a-z]{16}",
+      "base_confidence": 70,
+      "category": "Social Media & Analytics",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "linkedin"
+      ]
+    },
+    {
+      "name": "Google Analytics",
+      "regex": "UA-[0-9]+-[0-9]+",
+      "base_confidence": 75,
+      "category": "Social Media & Analytics",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Google Tag Manager",
+      "regex": "GTM-[0-9A-Z]+",
+      "base_confidence": 75,
+      "category": "Social Media & Analytics",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Mixpanel Token",
+      "regex": "[a-f0-9]{32}",
+      "base_confidence": 70,
+      "category": "Social Media & Analytics",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "key",
+        "secret",
+        "token",
+        "password",
+        "credential",
+        "auth",
+        "private",
+        "apikey",
+        "api_key",
+        "client_secret",
+        "access_token"
+      ]
+    },
+    {
+      "name": "Datadog API Key",
+      "regex": "[0-9a-f]{32}",
+      "base_confidence": 75,
+      "category": "Monitoring & Security Services",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "key",
+        "secret",
+        "token",
+        "password",
+        "credential",
+        "auth",
+        "private",
+        "apikey",
+        "api_key",
+        "client_secret",
+        "access_token"
+      ]
+    },
+    {
+      "name": "New Relic License Key",
+      "regex": "[0-9a-f]{40}",
+      "base_confidence": 80,
+      "category": "Monitoring & Security Services",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "key",
+        "secret",
+        "token",
+        "password",
+        "credential",
+        "auth",
+        "private",
+        "apikey",
+        "api_key",
+        "client_secret",
+        "access_token"
+      ]
+    },
+    {
+      "name": "Sentry DSN",
+      "regex": "https://[0-9a-f]{32}@[0-9a-f]+\\.ingest\\.sentry\\.io/[0-9]+",
+      "base_confidence": 90,
+      "category": "Monitoring & Security Services",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "PagerDuty Integration Key",
+      "regex": "[0-9a-f]{32}",
+      "base_confidence": 75,
+      "category": "Monitoring & Security Services",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "key",
+        "secret",
+        "token",
+        "password",
+        "credential",
+        "auth",
+        "private",
+        "apikey",
+        "api_key",
+        "client_secret",
+        "access_token"
+      ]
+    },
+    {
+      "name": "Rollbar Access Token",
+      "regex": "[0-9a-f]{32}",
+      "base_confidence": 75,
+      "category": "Monitoring & Security Services",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "key",
+        "secret",
+        "token",
+        "password",
+        "credential",
+        "auth",
+        "private",
+        "apikey",
+        "api_key",
+        "client_secret",
+        "access_token"
+      ]
+    },
+    {
+      "name": "Bugsnag API Key",
+      "regex": "[0-9a-f]{32}",
+      "base_confidence": 75,
+      "category": "Monitoring & Security Services",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "key",
+        "secret",
+        "token",
+        "password",
+        "credential",
+        "auth",
+        "private",
+        "apikey",
+        "api_key",
+        "client_secret",
+        "access_token"
+      ]
+    },
+    {
+      "name": "RSA Private Key",
+      "regex": "-----BEGIN RSA PRIVATE KEY-----",
+      "base_confidence": 95,
+      "category": "Certificates & Private Keys",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "DSA Private Key",
+      "regex": "-----BEGIN DSA PRIVATE KEY-----",
+      "base_confidence": 95,
+      "category": "Certificates & Private Keys",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "EC Private Key",
+      "regex": "-----BEGIN EC PRIVATE KEY-----",
+      "base_confidence": 95,
+      "category": "Certificates & Private Keys",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "OpenSSH Private Key",
+      "regex": "-----BEGIN OPENSSH PRIVATE KEY-----",
+      "base_confidence": 95,
+      "category": "Certificates & Private Keys",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "PGP Private Key",
+      "regex": "-----BEGIN PGP PRIVATE KEY BLOCK-----",
+      "base_confidence": 95,
+      "category": "Certificates & Private Keys",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Certificate",
+      "regex": "-----BEGIN CERTIFICATE-----",
+      "base_confidence": 85,
+      "category": "Certificates & Private Keys",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "SSH Public Key",
+      "regex": "ssh-rsa [A-Za-z0-9+/]+",
+      "base_confidence": 80,
+      "category": "Certificates & Private Keys",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "SSH Ed25519 Key",
+      "regex": "ssh-ed25519 [A-Za-z0-9+/]+",
+      "base_confidence": 85,
+      "category": "Certificates & Private Keys",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Password",
+      "regex": "(?i)(password|passwd|pwd)['\\\"\\s:=]+([a-zA-Z0-9@#$%^&*()_+=\\-!]{8,})",
+      "base_confidence": 75,
+      "category": "Credentials & Authentication",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Username",
+      "regex": "(?i)(username|user|login)['\\\"\\s:=]+([a-zA-Z0-9_\\-@.]{3,})",
+      "base_confidence": 65,
+      "category": "Credentials & Authentication",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Email Address",
+      "regex": "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}",
+      "base_confidence": 70,
+      "category": "Credentials & Authentication",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Phone Number",
+      "regex": "(?:\\+?1[-.\\s]?)?\\(?[0-9]{3}\\)?[-.\\s]?[0-9]{3}[-.\\s]?[0-9]{4}",
+      "base_confidence": 60,
+      "category": "Credentials & Authentication",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "card",
+        "credit",
+        "ssn",
+        "social",
+        "routing",
+        "account_number",
+        "phone",
+        "tel",
+        "mobile"
+      ]
+    },
+    {
+      "name": "Basic Auth",
+      "regex": "(?i)authorization:\\s*basic\\s+([A-Za-z0-9+/=]+)",
+      "base_confidence": 85,
+      "category": "Credentials & Authentication",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "MD5 Hash",
+      "regex": "[a-fA-F0-9]{32}",
+      "base_confidence": 60,
+      "category": "Encryption & Hashing",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "key",
+        "secret",
+        "token",
+        "password",
+        "credential",
+        "auth",
+        "private",
+        "apikey",
+        "api_key",
+        "client_secret",
+        "access_token"
+      ]
+    },
+    {
+      "name": "SHA1 Hash",
+      "regex": "[a-fA-F0-9]{40}",
+      "base_confidence": 65,
+      "category": "Encryption & Hashing",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "key",
+        "secret",
+        "token",
+        "password",
+        "credential",
+        "auth",
+        "private",
+        "apikey",
+        "api_key",
+        "client_secret",
+        "access_token"
+      ]
+    },
+    {
+      "name": "SHA256 Hash",
+      "regex": "[a-fA-F0-9]{64}",
+      "base_confidence": 70,
+      "category": "Encryption & Hashing",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "key",
+        "secret",
+        "token",
+        "password",
+        "credential",
+        "auth",
+        "private",
+        "apikey",
+        "api_key",
+        "client_secret",
+        "access_token"
+      ]
+    },
+    {
+      "name": "SHA512 Hash",
+      "regex": "[a-fA-F0-9]{128}",
+      "base_confidence": 75,
+      "category": "Encryption & Hashing",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "key",
+        "secret",
+        "token",
+        "password",
+        "credential",
+        "auth",
+        "private",
+        "apikey",
+        "api_key",
+        "client_secret",
+        "access_token"
+      ]
+    },
+    {
+      "name": "Base64 Encoded",
+      "regex": "(?:[A-Za-z0-9+/]{4}){5,}(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?",
+      "base_confidence": 50,
+      "category": "Encryption & Hashing",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "key",
+        "secret",
+        "token",
+        "password",
+        "credential",
+        "auth",
+        "private",
+        "apikey",
+        "api_key",
+        "client_secret",
+        "access_token"
+      ]
+    },
+    {
+      "name": "Bcrypt Hash",
+      "regex": "\\$2[ayb]\\$.{56}",
+      "base_confidence": 80,
+      "category": "Encryption & Hashing",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Webhook URL",
+      "regex": "(?i)(webhook|hook)['\\\"\\s:=]+(https?://[^\\s\\\"']+)",
+      "base_confidence": 75,
+      "category": "URLs & Endpoints (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Callback URL",
+      "regex": "(?i)(callback|redirect[_\\s-]*uri?)['\\\"\\s:=]+(https?://[^\\s\\\"']+)",
+      "base_confidence": 70,
+      "category": "URLs & Endpoints (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "API Endpoint",
+      "regex": "(?i)(api[_\\s-]*url|endpoint)['\\\"\\s:=]+(https?://[^\\s\\\"']+)",
+      "base_confidence": 75,
+      "category": "URLs & Endpoints (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Database URL",
+      "regex": "(?i)(database[_\\s-]*url|db[_\\s-]*url)['\\\"\\s:=]+(https?://[^\\s\\\"']+)",
+      "base_confidence": 80,
+      "category": "URLs & Endpoints (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "S3 Bucket URL",
+      "regex": "https?://[a-zA-Z0-9\\-]+\\.s3(?:\\.[a-zA-Z0-9\\-]+)?\\.amazonaws\\.com",
+      "base_confidence": 85,
+      "category": "URLs & Endpoints (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "CDN URL",
+      "regex": "https?://[a-zA-Z0-9\\-]+\\.(?:cloudfront\\.net|fastly\\.com|jsdelivr\\.net)",
+      "base_confidence": 70,
+      "category": "URLs & Endpoints (Enhanced)",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "IP Address",
+      "regex": "(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)",
+      "base_confidence": 60,
+      "category": "Network & Infrastructure",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Private IP",
+      "regex": "(?:10\\.(?:[0-9]{1,3}\\.){2}[0-9]{1,3}|172\\.(?:1[6-9]|2[0-9]|3[0-1])\\.[0-9]{1,3}\\.[0-9]{1,3}|192\\.168\\.[0-9]{1,3}\\.[0-9]{1,3})",
+      "base_confidence": 65,
+      "category": "Network & Infrastructure",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "MAC Address",
+      "regex": "(?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2})",
+      "base_confidence": 60,
+      "category": "Network & Infrastructure",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Port Number",
+      "regex": "(?i)(port)['\\\"\\s:=]+([0-9]{1,5})",
+      "base_confidence": 50,
+      "category": "Network & Infrastructure",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "IPv6 Address",
+      "regex": "(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}",
+      "base_confidence": 70,
+      "category": "Network & Infrastructure",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Credit Card",
+      "regex": "[0-9]{4}[-\\s]?[0-9]{4}[-\\s]?[0-9]{4}[-\\s]?[0-9]{4}",
+      "base_confidence": 80,
+      "category": "Financial & Identity",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "card",
+        "credit",
+        "ssn",
+        "social",
+        "routing",
+        "account_number",
+        "phone",
+        "tel",
+        "mobile"
+      ]
+    },
+    {
+      "name": "SSN",
+      "regex": "[0-9]{3}-[0-9]{2}-[0-9]{4}",
+      "base_confidence": 85,
+      "category": "Financial & Identity",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "card",
+        "credit",
+        "ssn",
+        "social",
+        "routing",
+        "account_number",
+        "phone",
+        "tel",
+        "mobile"
+      ]
+    },
+    {
+      "name": "IBAN",
+      "regex": "[A-Z]{2}[0-9]{2}[A-Z0-9]{4}[0-9]{7}([A-Z0-9]?){0,16}",
+      "base_confidence": 80,
+      "category": "Financial & Identity",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Routing Number",
+      "regex": "[0-9]{9}",
+      "base_confidence": 70,
+      "category": "Financial & Identity",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "card",
+        "credit",
+        "ssn",
+        "social",
+        "routing",
+        "account_number",
+        "phone",
+        "tel",
+        "mobile"
+      ]
+    },
+    {
+      "name": "Pusher Key",
+      "regex": "[a-f0-9]{20}",
+      "base_confidence": 70,
+      "category": "Additional Service Tokens",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "key",
+        "secret",
+        "token",
+        "password",
+        "credential",
+        "auth",
+        "private",
+        "apikey",
+        "api_key",
+        "client_secret",
+        "access_token"
+      ]
+    },
+    {
+      "name": "Pusher Secret",
+      "regex": "[a-f0-9]{40}",
+      "base_confidence": 80,
+      "category": "Additional Service Tokens",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "key",
+        "secret",
+        "token",
+        "password",
+        "credential",
+        "auth",
+        "private",
+        "apikey",
+        "api_key",
+        "client_secret",
+        "access_token"
+      ]
+    },
+    {
+      "name": "Algolia API Key",
+      "regex": "[0-9a-f]{32}",
+      "base_confidence": 75,
+      "category": "Additional Service Tokens",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "key",
+        "secret",
+        "token",
+        "password",
+        "credential",
+        "auth",
+        "private",
+        "apikey",
+        "api_key",
+        "client_secret",
+        "access_token"
+      ]
+    },
+    {
+      "name": "Cloudinary URL",
+      "regex": "cloudinary://[0-9]+:[a-zA-Z0-9\\-_]+@[a-zA-Z0-9\\-]+",
+      "base_confidence": 85,
+      "category": "Additional Service Tokens",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "MapBox Token",
+      "regex": "pk\\.[a-zA-Z0-9]{60,}",
+      "base_confidence": 85,
+      "category": "Additional Service Tokens",
+      "distinctive_format": false,
+      "requires_context_keywords": null
+    },
+    {
+      "name": "Segment Write Key",
+      "regex": "[a-zA-Z0-9]{32}",
+      "base_confidence": 75,
+      "category": "Additional Service Tokens",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "key",
+        "secret",
+        "token",
+        "password",
+        "credential",
+        "auth",
+        "private",
+        "apikey",
+        "api_key",
+        "client_secret",
+        "access_token"
+      ]
+    },
+    {
+      "name": "High Entropy String (40+ chars)",
+      "regex": "[a-zA-Z0-9/+=]{40,}",
+      "base_confidence": 40,
+      "category": "Generic High-Entropy Strings",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "key",
+        "secret",
+        "token",
+        "password",
+        "credential",
+        "auth",
+        "private",
+        "apikey",
+        "api_key",
+        "client_secret",
+        "access_token"
+      ]
+    },
+    {
+      "name": "High Entropy String (20+ chars)",
+      "regex": "[a-zA-Z0-9\\-_]{20,}",
+      "base_confidence": 30,
+      "category": "Generic High-Entropy Strings",
+      "distinctive_format": false,
+      "requires_context_keywords": [
+        "key",
+        "secret",
+        "token",
+        "password",
+        "credential",
+        "auth",
+        "private",
+        "apikey",
+        "api_key",
+        "client_secret",
+        "access_token"
+      ]
+    }
+  ]
+}
