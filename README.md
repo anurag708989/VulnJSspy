@@ -261,4 +261,18 @@ include a source/rationale and, where possible, a test string in `tests/patterns
 for how to structure a paid tier without relicensing the core tool.
 
 ---
-*VulnJSpy Professional — built for authorized security research.*
+*VulnJSpy Professional — built for authorised security research.*
+
+![Command](images/image1.png)
+
+![working1](images/image2.png)
+
+![working2](images/image3.png)
+
+![working3](images/image4.png)
+
+![working4](images/image5.png)
+
+![telegram](images/image6.png)
+
+
